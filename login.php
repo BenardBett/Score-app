@@ -1,4 +1,4 @@
-
+<!-- 
 <?php
 session_start();
 require 'db.php';
@@ -30,4 +30,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </form>
 <p style="color:red;"><?= $error ?></p>
 </body>
-</html>
+</html> -->
+
+
+
+<?php
+session_start();
+require 'db.php'; // This should set up $pdo
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $inputPassword = $_POST['password'];
+
+    $stmt = $pdo->prepare("SELECT * FROM judges WHERE username = ?");
+    $stmt->execute([$username]);
+    $user = $stmt->fetch();
+
+    if ($user && password_verify($inputPassword, $user['password'])) {
+        $_SESSION['judge_id'] = $user['id'];
+        header("Location: scores.php");
+        exit();
+    } else {
+        echo "Invalid username or password.";
+    }
+}
+?>
+<form method="POST">
+  <input name="username" placeholder="Username"><br>
+  <input name="password" type="password" placeholder="Password"><br>
+  <button type="submit">Login</button>
+</form>

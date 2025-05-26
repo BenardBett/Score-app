@@ -4,10 +4,21 @@ A simple web-based scoring system with admin, judge, and public scoreboard inter
 
 ## Features
 
-- Add judges (Admin panel)
-- Judges score participants
-- Public scoreboard (auto-updating)
+- Admin panel to add **Judges** and **Participants**
+- Judges can view participants and assign scores (1–100)
+- Public **Scoreboard** displays all participants sorted by total score
+- Auto-updating UI (intended for live competitions)
 - Built with PHP, MySQL, HTML, CSS
+
+
+## Prerequisites
+
+- Apache (or XAMPP/LAMP/WAMP)
+- PHP 7+
+- MySQL
+- Git
+
+
 
 ## Setup Instructions
 
@@ -57,3 +68,4 @@ All judges can score any participant independently.
 ## Author
 
 Benard Bett
+GitHub:BenardBett
